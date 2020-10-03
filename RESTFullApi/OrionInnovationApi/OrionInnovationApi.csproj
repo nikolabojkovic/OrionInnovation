@@ -4,5 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-
+ <ItemGroup>
+    <ProjectReference Include="..\OrionInnovationCore\OrionInnovation.Application\OrionInnovation.Application.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
-using System;
 using Xunit;
 using FluentAssertions;
+using OrionInnovation.Domain;
 
 namespace OrionInnovation.UnitTests
 {
@@ -9,7 +9,14 @@ namespace OrionInnovation.UnitTests
         [Fact]
         public void CreateText_ShouldCreateTextObject()
         {
-            string.Empty.Should().Be(string.Empty);
+            // Arrange
+            var expectedText = "Sample text";
+
+            // Act
+            var actualText = Text.Create(expectedText);
+
+            // Assert
+            actualText.Content.Should().Be(expectedText);
         }
     }
 }

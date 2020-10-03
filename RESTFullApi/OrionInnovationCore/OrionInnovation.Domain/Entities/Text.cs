@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace OrionInnovation.Domain
 {
@@ -11,9 +12,14 @@ namespace OrionInnovation.Domain
             Content = content;
         }
 
-        public Text Create(string content) 
+        public static Text Create(string content) 
         {
             return new Text(content);
+        }
+
+        public int CountWords()
+        {
+            return Content.Count();
         }
     }
 }
