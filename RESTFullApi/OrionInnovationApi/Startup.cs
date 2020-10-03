@@ -1,11 +1,12 @@
 using System.Reflection;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OrionInnovationApi.Extensions;
 
 namespace OrionInnovationApi
 {
@@ -21,18 +22,13 @@ namespace OrionInnovationApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options => { 
-                options.AddPolicy("AllowAllOrigins",
-                    builder =>
-                    {
-                        builder.AllowAnyOrigin()
-                               .AllowAnyMethod()
-                               .AllowAnyHeader();
-                    });
-            });
-            services.AddMediatR(new Assembly[] { Assembly.Load("OrionInnovation.Application") });
+            services.AddDbContext(Configuration);
+            services.AddAutoMapper(new Assembly[] { Assembly.Load("OrionInnovation.Application") });
+            services.AddSwagger();
+            services.AddDepenedencyInjection();
+            services.AddAllOriginsCors();
             services.AddControllers();
-         //   services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddMediatR(new Assembly[] { Assembly.Load("OrionInnovation.Application") });
             services.AddHttpContextAccessor();
         }
 
@@ -44,9 +40,9 @@ namespace OrionInnovationApi
                 app.UseDeveloperExceptionPage();
             }
 
-            // app.UseHttpsRedirection();
-
-            app.UseCors("AllowAllOrigins");
+            app.UseAllOriginsCors();
+            app.UseCustomSwagger();
+            app.AddMiddlewares();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

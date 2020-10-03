@@ -8,10 +8,18 @@ namespace OrionInnovationApi.Controllers
     [Route("[controller]")]
     public class TextController : BaseController
     {
-        [HttpGet]
-        public async Task<IActionResult> GetText()
+        [HttpGet("{id}/from_db")]
+        public async Task<IActionResult> GetTextFromDb(int id)
         {
-            return Ok();
+            var text = await MediatR.Send(new GetTextFromDbQuary { Id = id});
+
+            return Ok(text);
+        }
+
+        [HttpGet("{id}/from_file_system")]
+        public IActionResult GetTextFromFileSystem(int id)
+        {
+            return Ok("text from file system");
         }
 
         [HttpPost("count_words")]
