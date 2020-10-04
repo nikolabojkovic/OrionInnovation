@@ -9,6 +9,9 @@
   </ItemGroup>
 
  <ItemGroup>
+ <Content Include="Data/FileSystem\**"> 
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> 
+  </Content> 
     <ProjectReference Include="..\..\OrionInnovationCore\OrionInnovation.Application\OrionInnovation.Application.csproj" />
   </ItemGroup>
 </Project>

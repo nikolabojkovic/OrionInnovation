@@ -4,11 +4,11 @@ using OrionInnovation.Domain;
 
 namespace OrionInnovation.Persistence
 {
-    public class TextRepository : ITextRepository
+    public class TextSqlDbRepository : ITextRepository
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public TextRepository(IUnitOfWork unitOfWork)
+        public TextSqlDbRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

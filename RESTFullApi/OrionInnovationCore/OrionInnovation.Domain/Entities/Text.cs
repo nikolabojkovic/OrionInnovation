@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace OrionInnovation.Domain
 {
@@ -7,7 +8,7 @@ namespace OrionInnovation.Domain
     {
         // Properties
         public string Content { get; private set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; private set; }
 
         // Constructors
         private Text() {}
@@ -26,13 +27,13 @@ namespace OrionInnovation.Domain
             if (string.IsNullOrWhiteSpace(Content))
                 return 0;
 
-            string[] words =  Content.Split(" ");
+            string text = Content;
 
-            // TODO: replace non alphabet character with white space
-            //       and then trim white spaces
+            // Remove non-alphanumeric characters
+            text = Regex.Replace(text, "\\W+", " ");
 
-            words = words.Select(word => word.Trim())
-                         .ToArray();
+            // Trim extra white spaces and split text on white space
+            string[] words =  text.Trim().Split(" ");
 
             return words.Length;
         }

@@ -15,7 +15,7 @@
   </ItemGroup>
 
  <ItemGroup>
-    <ProjectReference Include="..\OrionInnovation.Application\OrionInnovation.Application.csproj" />
-    <ProjectReference Include="..\OrionInnovation.Domain\OrionInnovation.Domain.csproj" />
+    <ProjectReference Include="..\..\OrionInnovationCore\OrionInnovation.Application\OrionInnovation.Application.csproj" />
+    <ProjectReference Include="..\..\OrionInnovationCore\OrionInnovation.Domain\OrionInnovation.Domain.csproj" />
   </ItemGroup>
 </Project>

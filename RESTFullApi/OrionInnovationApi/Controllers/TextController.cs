@@ -17,9 +17,11 @@ namespace OrionInnovationApi.Controllers
         }
 
         [HttpGet("{id}/from_file_system")]
-        public IActionResult GetTextFromFileSystem(int id)
+        public async Task<IActionResult> GetTextFromFileSystem(int id)
         {
-            return Ok("text from file system");
+             var text = await MediatR.Send(new GetTextFromFileSystemQuery{ Id = id});
+
+            return Ok(text);
         }
 
         [HttpPost("count_words")]

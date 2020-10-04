@@ -21,8 +21,8 @@ namespace OrionInnovation.Persistence
 
             var textList = new Text[]
             {
-                Text.Create("Sample text from Nikola Bojkovic!", new DateTime(2020, 10, 1)),
-                Text.Create("More text for testing", new DateTime(2020, 10, 5)),
+                Text.Create("Sample text from DB by Nikola Bojkovic!", new DateTime(2020, 10, 1)),
+                Text.Create("More text from db for testing", new DateTime(2020, 10, 5)),
             };
 
             context.Set<Text>().AddRange(textList);
