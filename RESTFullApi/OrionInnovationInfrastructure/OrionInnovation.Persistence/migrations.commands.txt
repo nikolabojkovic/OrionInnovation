@@ -1,0 +1,4 @@
+dotnet ef migrations add InitialMigration --context OrionInnovationSqlDbContext --startup-project "/Users/mac/Documents/Interview tasks and questions/OrionInnovation/RESTFullAPI/OrionInnovationApi/OrionInnovationApi.csproj"
+dotnet ef migrations list --context OrionInnovationSqlDbContext --startup-project "/Users/mac/Documents/Interview tasks and questions/OrionInnovation/RESTFullAPI/OrionInnovationApi/OrionInnovationApi.csproj"
+dotnet ef database update --context OrionInnovationSqlDbContext --startup-project "/Users/mac/Documents/Interview tasks and questions/OrionInnovation/RESTFullAPI/OrionInnovationApi/OrionInnovationApi.csproj"
+dotnet ef migrations remove --context OrionInnovationSqlDbContext --startup-project "/Users/mac/Documents/Interview tasks and questions/OrionInnovation/RESTFullAPI/OrionInnovationApi/OrionInnovationApi.csproj"

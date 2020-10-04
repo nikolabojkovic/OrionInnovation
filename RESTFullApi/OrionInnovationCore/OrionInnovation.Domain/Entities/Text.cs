@@ -6,10 +6,12 @@ namespace OrionInnovation.Domain
     public class Text : Entity
     {
         // Properties
-        public string Content { get; }
+        public string Content { get; private set; }
         public DateTime CreatedAt { get; set; }
 
         // Constructors
+        private Text() {}
+
         private Text(string content)
         {
             Content = content;
