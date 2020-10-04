@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OrionInnovationApi.Extensions;
 
 namespace OrionInnovationApi
 {
@@ -13,7 +14,9 @@ namespace OrionInnovationApi
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            IHost host = CreateHostBuilder(args).Build();
+            host.SeedDatabase();
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

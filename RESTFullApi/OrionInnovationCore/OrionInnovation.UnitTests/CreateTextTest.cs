@@ -1,6 +1,7 @@
 using Xunit;
 using FluentAssertions;
 using OrionInnovation.Domain;
+using System;
 
 namespace OrionInnovation.UnitTests
 {
@@ -11,12 +12,14 @@ namespace OrionInnovation.UnitTests
         {
             // Arrange
             var expectedText = "Sample text";
+            var expectedDateOfCreating = new DateTime(2020, 10, 3);
 
             // Act
-            var actualText = Text.Create(expectedText);
+            var actualText = Text.Create(expectedText, expectedDateOfCreating);
 
             // Assert
             actualText.Content.Should().Be(expectedText);
+            actualText.CreatedAt .Should().Be(expectedDateOfCreating);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -5,20 +6,19 @@ using OrionInnovation.Domain;
 
 namespace OrionInnovation.Application
 {
-    class CountWordsQuaryHandler : IRequestHandler<CountWordsQuary, TextViewModel>
+    class CountWordsQuaryHandler : IRequestHandler<CountWordsQuary, WordsCountViewModel>
     {
         public CountWordsQuaryHandler() { }
 
-        public Task<TextViewModel> Handle(CountWordsQuary request, CancellationToken cancellationToken)
+        public Task<WordsCountViewModel> Handle(CountWordsQuary request, CancellationToken cancellationToken)
         {
             if (request.Content == null)
                 throw new BadRequestException("Text is required");
 
-            var text = Text.Create(request.Content);
+            var text = Text.Create(request.Content, DateTime.Now);
             var wordsCount = text.CountWords();
 
-            var viewModel = new TextViewModel {
-                Content = request.Content,
+            var viewModel = new WordsCountViewModel {
                 WordsCount = wordsCount
             };
 

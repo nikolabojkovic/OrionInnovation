@@ -12,15 +12,13 @@ namespace OrionInnovation.Domain
         // Constructors
         private Text() {}
 
-        private Text(string content)
-        {
-            Content = content;
-        }
-
         // Behaviours
-        public static Text Create(string content) 
+        public static Text Create(string content, DateTime createdAt) 
         {
-            return new Text(content);
+            return new Text { 
+                Content = content,
+                CreatedAt = createdAt
+            };
         }
 
         public int CountWords()
