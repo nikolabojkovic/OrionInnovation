@@ -9,6 +9,8 @@ namespace OrionInnovationApi.Controllers
     public class TextController : BaseController
     {
         [HttpGet("{id}/from_db")]
+        [ProducesResponseType(typeof(TextViewModel), 200)]
+        [ProducesResponseType(typeof(string), 404)]
         public async Task<IActionResult> GetTextFromDb(int id)
         {
             var text = await MediatR.Send(new GetTextFromDbQuary { Id = id});
@@ -17,6 +19,8 @@ namespace OrionInnovationApi.Controllers
         }
 
         [HttpGet("{id}/from_file_system")]
+        [ProducesResponseType(typeof(TextViewModel), 200)]
+        [ProducesResponseType(typeof(string), 404)]
         public async Task<IActionResult> GetTextFromFileSystem(int id)
         {
              var text = await MediatR.Send(new GetTextFromFileSystemQuery{ Id = id});
@@ -25,6 +29,8 @@ namespace OrionInnovationApi.Controllers
         }
 
         [HttpPost("count_words")]
+        [ProducesResponseType(typeof(CountWordsViewModel), 200)]
+        [ProducesResponseType(typeof(string), 400)]
         public async Task<IActionResult> CountWords([FromBody] CountWordsQuary request)
         {
             var result = await MediatR.Send(request);

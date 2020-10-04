@@ -1,7 +1,7 @@
 namespace OrionInnovation.Application
 {
-    public class WordsCountViewModel
+    public class CountWordsViewModel
     {
-        public int WordsCount { get; set; }
+        public int TotalNumber { get; set; }
     }
 }

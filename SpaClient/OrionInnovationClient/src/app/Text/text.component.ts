@@ -10,7 +10,7 @@ import { Text as TextModel } from './text.model';
 export class TextComponent implements OnInit {
 
     text: string;
-    wordsCount: number;
+    numberOfWords: number;
 
     constructor(private textService: TextService) { }
 
@@ -36,7 +36,7 @@ export class TextComponent implements OnInit {
 
     countWords(): void {
         this.textService.countWords(this.text)
-            .subscribe(result => this.wordsCount = result.wordsCount,
+            .subscribe(wordsCount => this.numberOfWords = wordsCount.totalNumber,
                 error => console.error(error));
     }
 }
