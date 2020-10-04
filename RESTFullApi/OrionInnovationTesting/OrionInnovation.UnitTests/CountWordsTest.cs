@@ -12,6 +12,7 @@ namespace OrionInnovation.UnitTests
         [InlineData("Text created by Nikola Bojkovic. .", 5)]
         [InlineData("Text created by ..,$ %!@ Nikola Bojkovic. .", 5)]
         [InlineData("   Text created   by ..,$ %!@ Nikola Bojkovic. . ", 5)]
+        [InlineData("Sample text from file by Nikola Bojkovic ", 7)]
         [InlineData(" ", 0)]
         [InlineData("", 0)]
         public void CroundWords_FromText_ShouldReturnWordsCount(string text, int expectedWordsCount)

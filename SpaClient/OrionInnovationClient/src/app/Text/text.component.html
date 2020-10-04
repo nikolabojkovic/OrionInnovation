@@ -1,0 +1,18 @@
+<div class="row mt-5">
+    <div class="col-3">
+        <button class="btn btn-primary" (click)="getTextFromDb()">Get text from db</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-danger" (click)="getTextFromFile()">Get text from file</button>
+    </div>
+</div>
+<div class="row mt-5">
+    <textarea [(ngModel)]="text" rows=4 cols=50></textarea>
+</div>
+<div class="row mt-5">
+    <button class="btn btn-dark" (click)="countWords()">Count words</button>
+</div>
+<div class="row mt-5">
+    <div class="mr-1">Number of words in the text:</div>
+    <div class="">{{ wordsCount }}</div>
+</div>
